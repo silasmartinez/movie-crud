@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bad Movie Ratings Main</title>
+    <link rel="stylesheet" href="/styles/style.css"/>
+</head>
+<body>
+<nav>
+    <h2>Really Bad Movie Ratings</h2>
+    <li><a href="/ratings/new">Create a rating</a></li>
+</nav>
+<div class="main">
+    <div class="ratings" id="header">
+        <div>Title</div>
+        <div>Director</div>
+        <div>Year</div>
+        <div>Rating</div>
+        <div>&nbsp;</div>
+    </div>
+
+    {{#ratings}}
+    <div class="ratings">
+        <div>
+            <a href="/ratings/{{_id}}">{{title}}</a>
+        </div>
+        <div>
+            {{director}}
+        </div>
+        <div>
+            {{year}}
+        </div>
+        <div>
+            {{rating}}
+        </div>
+        <div>
+            <div class="button">
+                <a href="/ratings/{{_id}}/edit">
+                    <button>edit</button>
+                </a>
+            </div>
+            <div class="button">
+
+                <form action="/ratings/{{_id}}/delete" method="post">
+                    <button type="submit">delete</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    {{/ratings}}
+
+</div>
+</body>
+</html>

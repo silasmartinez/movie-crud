@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Editing {{title}}</title>
+    <link rel="stylesheet" href="/styles/style.css"/>
+
+</head>
+<body>
+<nav>
+    <h2>Editing {{title}}</h2>
+    <li><a href="/ratings">Ratings Home</a></li>
+</nav>
+<div class="main">
+    <form action="/ratings/{{_id}}/update" method="POST">
+        <div id="img">
+            <img id="edit" src="{{poster}}" alt="{{title}}"/>
+        </div>
+        <div class="param">Title:</div>
+        <div class="output">
+            <input type="text" name="title" value="{{title}}"/>
+        </div>
+        <div class="param">Director:</div>
+        <div class="output">
+            <input type="text" name="director" value="{{director}}"/>
+        </div>
+        <div class="param">Year:</div>
+        <div class="output">
+            <input type="text" name="year" value="{{year}}"/>
+        </div>
+        <div class="param">Rating:</div>
+        <div class="output">
+            <select name="rating">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3" selected>3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </div>
+        <div class="param">Poster URL:</div>
+        <div class="output">
+            <input type="text" name="poster" value="{{poster}}"/>
+        </div>
+        <button type="submit">edit rating</button>
+    </form>
+</div>
+</body>
+</html>
