@@ -6,7 +6,7 @@ var fs = require('fs'),
   mime = require('mime'),
 
   Rooter = require('rooter-router'),
-  router = newRooter
+  router = new Rooter
 
 function prep (file, obj, res) {
   res.setHeader('Content-Type', 'text/html')
@@ -14,6 +14,32 @@ function prep (file, obj, res) {
   var template = bars.compile(file.toString())(obj)
   res.end(template)
 }
+
+bars.registerHelper('match1', function (match) {
+  if (parseInt(match) === 1) {
+    return "selected"
+  }
+})
+bars.registerHelper('match2', function (match) {
+  if (parseInt(match) === 2) {
+    return "selected"
+  }
+})
+bars.registerHelper('match3', function (match) {
+  if (parseInt(match) === 3) {
+    return "selected"
+  }
+})
+bars.registerHelper('match4', function (match) {
+  if (parseInt(match) === 4) {
+    return "selected"
+  }
+})
+bars.registerHelper('match5', function (match) {
+  if (parseInt(match) === 5) {
+    return "selected"
+  }
+})
 
 router
   .add('/*', (req, res, url) => {

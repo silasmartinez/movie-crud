@@ -11,45 +11,39 @@
     <li><a href="/ratings/new">Create a rating</a></li>
 </nav>
 <div class="main">
-    <div class="ratings" id="header">
-        <div>Title</div>
-        <div>Director</div>
-        <div>Year</div>
-        <div>Rating</div>
-        <div>&nbsp;</div>
-    </div>
-
-    {{#ratings}}
-    <div class="ratings">
-        <div>
-            <a href="/ratings/{{_id}}">{{title}}</a>
-        </div>
-        <div>
-            {{director}}
-        </div>
-        <div>
-            {{year}}
-        </div>
-        <div>
-            {{rating}}
-        </div>
-        <div>
-            <div class="button">
+    <table>
+        <thead>
+        <tr>
+            <td width="20%">Title</td>
+            <td width="20%">Director</td>
+            <td width="15%">Year</td>
+            <td width="15%">Rating</td>
+            <td width="15%">&nbsp;</td>
+            <td width="15%">&nbsp;</td>
+        </tr>
+        </thead>
+        <tbody>
+        {{#ratings}}
+        <tr>
+            <td class="ratings"><a href="/ratings/{{_id}}">{{title}}</a></td>
+            <td class="ratings">{{director}}</td>
+            <td class="ratings">{{year}}</td>
+            <td class="ratings">{{rating}}</td>
+            <td class="ratings">
                 <a href="/ratings/{{_id}}/edit">
                     <button>edit</button>
                 </a>
-            </div>
-            <div class="button">
-
+            </td>
+            <td class="ratings">
                 <form action="/ratings/{{_id}}/delete" method="post">
                     <button type="submit">delete</button>
                 </form>
-            </div>
-        </div>
-
-    </div>
-    {{/ratings}}
-
+            </td>
+        </tr>
+        {{/ratings}}
+        </tbody>
+    </table>
 </div>
+
 </body>
 </html>
