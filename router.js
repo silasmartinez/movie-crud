@@ -6,10 +6,10 @@ var fs = require('fs'),
   mime = require('mime'),
 
   Rooter = require('rooter-router'),
-  router = new Rooter
+  router = newRooter
 
 function prep (file, obj, res) {
-  res.setHeader('Content-Type', 'text/html');
+  res.setHeader('Content-Type', 'text/html')
   var file = fs.readFileSync(file)
   var template = bars.compile(file.toString())(obj)
   res.end(template)
@@ -20,7 +20,7 @@ router
     // Static fileserver should appear to serve from / for sane URLs
     fs.readFile('public/' + req.url, function (err, file) {
       if (err) {
-        res.writeHead(404, {'Content-Type': 'text/html'});
+        res.writeHead(404, {'Content-Type': 'text/html'})
         res.end('404')
       } else {
         res.setHeader('Content-Type', mime.lookup(req.url))
@@ -45,14 +45,14 @@ router
   }, 'GET')
 
   .add('/ratings', (req, res, url) => {
-    var data = '';
+    var data = ''
     req.on('data', function (chunk) {
-      data += chunk;
-    });
+      data += chunk
+    })
     req.on('end', function () {
-      var rating = qs.parse(data);
-      ratings.insert(rating, function (err, doc) {
-        if (err){
+      var rating = qs.parse(data)
+      ratings.insert(rating, (err, doc) => {
+        if (err) {
           console.log(err)
           res.end('DB Error')
         }
@@ -75,11 +75,11 @@ router
   .add('/ratings/:id', (req, res, url) => {
     var data = ''
     req.on('data', (chunk) => {
-      data += chunk;
-    });
+      data += chunk
+    })
     req.on('end', () => {
       var rating = qs.parse(data)
-      ratings.insert(song, (err, doc) => {
+      ratings.insert(rating, (err, doc) => {
         res.writeHead(302, {'Location': '/ratings'})
         res.end()
       })
@@ -105,7 +105,7 @@ router
           console.log(err)
           res.end('404')
         }
-        res.writeHead(302, { 'Location': '/ratings' });
+        res.writeHead(302, { 'Location': '/ratings' })
         res.end()
       })
     })
