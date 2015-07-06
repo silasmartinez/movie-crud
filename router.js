@@ -15,28 +15,8 @@ function prep (file, obj, res) {
   res.end(template)
 }
 
-bars.registerHelper('match1', function (match) {
-  if (parseInt(match) === 1) {
-    return "selected"
-  }
-})
-bars.registerHelper('match2', function (match) {
-  if (parseInt(match) === 2) {
-    return "selected"
-  }
-})
-bars.registerHelper('match3', function (match) {
-  if (parseInt(match) === 3) {
-    return "selected"
-  }
-})
-bars.registerHelper('match4', function (match) {
-  if (parseInt(match) === 4) {
-    return "selected"
-  }
-})
-bars.registerHelper('match5', function (match) {
-  if (parseInt(match) === 5) {
+bars.registerHelper('selectMatch', function (x, y) {
+  if (x === y) {
     return "selected"
   }
 })
